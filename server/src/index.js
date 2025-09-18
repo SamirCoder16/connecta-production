@@ -40,4 +40,13 @@ const startServer = async () => {
   }
 };
 
-startServer();
+if (ENV.NODE_ENV !== "production") {
+  startServer();
+}
+
+// For Vercel: connect DB and export app
+if (ENV.NODE_ENV === "production") {
+  connectDB();
+}
+
+export default app;
